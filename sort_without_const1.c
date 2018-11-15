@@ -31,8 +31,11 @@ void void_map_array(VoidMappable const cb, uint32_t const size,
 
 void list2array(int_list_t list, CPS_Result res);
 
-/* sort a list and then store it in an array */
+/* quick sort functions */
 int_list_t getTail(int_list_t cur);
+int_list_t quicksort(int_list_t head, int_list_t tail);
+
+/* sort a list and then store it in an array */
 void quicksort_toarray(int_list_t list, CPS_Result res) {
     list2array(
         quicksort(list, getTail(list)), res
