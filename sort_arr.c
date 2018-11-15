@@ -32,7 +32,7 @@ static void print_val(int32_t const val) { printf("%d ", val); }
 
 /* quick sort functions */
 void swap(int *a, int *b);
-int Partition(int *arr, int front, int end);
+int partition(int *arr, int front, int end);
 void quicksort(int *arr, int front, int end);
 
 int main(int argc, char *argv[]) {
@@ -93,7 +93,7 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-int Partition(int *arr, int front, int end) {
+int partition(int *arr, int front, int end) {
     int pivot = arr[end];
     int i = front -1;
     for (int j = front; j < end; j++) {
@@ -109,7 +109,7 @@ int Partition(int *arr, int front, int end) {
 
 void quicksort(int *arr, int front, int end) {
     if (front < end) {
-        int pivot = Partition(arr, front, end);
+        int pivot = partition(arr, front, end);
         quicksort(arr, front, pivot - 1);
         quicksort(arr, pivot + 1, end);
     }
