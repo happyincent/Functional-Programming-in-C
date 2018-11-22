@@ -81,40 +81,57 @@ void list2array(int_list_t list, CPS_Result res) {
     list2array(list->next, array + 1);
 }
 
-void partition(int_list_t head, int_list_t *front, int_list_t *back) {
+// void partition(int_list_t head, int_list_t *front, int_list_t *back) {
 
-    int_list_t fast;
-    int_list_t slow;
+//     int_list_t fast;
+//     int_list_t slow;
 
+//     if (head == NULL || head->next == NULL) {
+//         *front = head; // &a
+//         *back = NULL; // &b
+//     }
+//     else {
+//         slow = head;
+//         fast = head->next;
+
+//         while(fast != NULL) {
+//             fast = fast->next;
+
+//             if (fast != NULL) {
+//                 slow = slow->next;
+//                 fast = fast->next;
+//             }
+//         }
+
+//         *front = head; // a
+//         *back = slow->next; // b
+//         slow->next = NULL;
+//     }
+
+// }
+
+void partition(int_list_t head, 
+                int_list_t slow, int_list_t fast, 
+                int_list_t *front, int_list_t *back) {
+    
     if (head == NULL || head->next == NULL) {
-
-        *front = head; // &a
-        *back = NULL; // &b
-
+        *front = head;
+        *back = NULL;
+        return;
+    }
+    
+    if (fast == NULL) {
+        *front = head;
+        *back = slow->next;
+        slow->next = NULL;
+        return;
     }
     else {
-
-        slow = head;
-        fast = head->next;
-
-        while(fast != NULL) {
-
-            fast = fast->next;
-
-            if (fast != NULL) {
-
-                slow = slow->next;
-                fast = fast->next;
-
-            }
-
-        }
-
-        *front = head; // a
-        *back = slow->next; // b
-        slow->next = NULL;
+        if (fast->next == NULL)
+            partition(head, slow, fast->next, front, back);
+        else
+            partition(head, slow->next, fast->next->next, front, back);
     }
-
 }
 
 int_list_t mergeLists(int_list_t a, int_list_t b) {
@@ -150,7 +167,8 @@ void mergesort(int_list_t *source) {
         return;
     }
 
-    partition(head, &a, &b);
+    partition(head, head, head->next, &a, &b);
+    // partition(head, &a, &b);
 
     mergesort(&a);
     mergesort(&b);
