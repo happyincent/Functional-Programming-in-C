@@ -86,7 +86,8 @@ void list2array(ele_t *e, CPS_Result res) {
 }
 
 void mergesort_toarray(ele_t *e, CPS_Result res) {
-    mergesort(&e);
+    if (e->list->next != NULL)
+        mergesort(&e);
     list2array(e, res);
 }
 
