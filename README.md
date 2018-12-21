@@ -3,12 +3,9 @@ https://hackmd.io/s/r1SgsdF3X
 
 ## References
 
-### quick sort (array)
-http://alrightchiu.github.io/SecondRound/comparison-sort-quick-sortkuai-su-pai-xu-fa.html
-
-### quick sort (linked list)
-* https://www.tutorialcup.com/linked-list/quick-sort-sIngly-linked-list.htm
-* https://gist.github.com/sing1ee/5949395
-
 ### merge sort (linked list)
 * https://www.geeksforgeeks.org/merge-sort-for-linked-list/
+
+### list.h
+* https://github.com/sysprog21/linux-list/blob/master/include/list.h
+* https://hackmd.io/SqNCmZ8HSYegTCQZ0sQKZw
